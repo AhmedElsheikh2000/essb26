@@ -39,13 +39,14 @@ android {
     }
 
     signingConfigs {
-        create("release") {
+        create("release") {if (keystoreProperties["keyAlias"] != null) {
             keyAlias = keystoreProperties["keyAlias"] as String
             keyPassword = keystoreProperties["keyPassword"] as String
             storeFile = file(keystoreProperties["storeFile"] as String)
             storePassword = keystoreProperties["storePassword"] as String
         }
     }
+}  // edited by jana to prevent crashing
 
    buildTypes {
     getByName("release") {

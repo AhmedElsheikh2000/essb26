@@ -102,42 +102,15 @@ class HomeContent extends StatelessWidget {
     );
   }
 
+
   Widget _buildBannerCarousel() {
     // Egyptian themed colors from the banner image
-    final List<Map<String, dynamic>> banners = [
-      {
-        'title': 'Welcome to ESSB & PATS 2025',
-        'subtitle': 'Join us for an exceptional conference',
-        'icon': Icons.celebration,
-        'colors': [
-          const Color(0xFFFBF3E4), // Cream/Beige
-          const Color(0xFFF5E6D3), // Light Beige
-          const Color(0xFFE8D4BC), // Warm Beige
-        ],
-      },
-      {
-        'title': 'World-Class Speakers',
-        'subtitle': 'Learn from the best in the field',
-        'icon': Icons.groups,
-        'colors': [
-          const Color(0xFFFFE8C5), // Peachy Beige
-          const Color(0xFFFDD8A8), // Light Peach
-          const Color(0xFFF5C98C), // Golden Peach
-        ],
-      },
-      {
-        'title': 'Networking Opportunities',
-        'subtitle': 'Connect with peers worldwide',
-        'icon': Icons.handshake,
-        'colors': [
-          const Color(0xFFDEB887), // Burlywood
-          const Color(0xFFD4AF37), // Gold
-          const Color(0xFFDAA520), // Goldenrod
-        ],
-      },
-    ];
-
-    return CarouselSlider(
+    final List<String> banners = [
+  'assets/images/designs.jpeg',
+  'assets/images/design3.jpeg',
+  'assets/images/design2.jpeg',
+  'assets/images/design4.jpeg'];
+return CarouselSlider(
       options: CarouselOptions(
         height: 200,
         autoPlay: true,
@@ -146,7 +119,8 @@ class HomeContent extends StatelessWidget {
         autoPlayInterval: const Duration(seconds: 4),
         autoPlayCurve: Curves.easeInOut,
       ),
-      items: banners.map((banner) {
+
+items: banners.map((imgPath) {
         return Builder(
           builder: (BuildContext context) {
             return Container(
@@ -154,55 +128,28 @@ class HomeContent extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 5.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: banner['colors'],
-                ),
+                image: DecorationImage(
+                image: AssetImage(imgPath),
+                fit: BoxFit.fill, //stretched shwaya , contain mkhlyaha cropped 
+              ),
+          
                 boxShadow: [
-                  BoxShadow(
-                    color: primaryPurple.withOpacity(0.3),
-                    blurRadius: 15,
-                    offset: const Offset(0, 8),
-                  ),
-                ],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      banner['icon'],
-                      size: 50,
-                      color: primaryPurple,
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      banner['title'],
-                      style: AppTextStyles.h4.copyWith(
-                        color: primaryPurple,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      banner['subtitle'],
-                      style: AppTextStyles.bodySmall.copyWith(
-                        color: darkText.withOpacity(0.8),
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  blurRadius: 10,
+                  offset: const Offset(0, 5),
                 ),
-              ),
-            );
-          },
-        );
-      }).toList(),
-    );
-  }
+              ],
+            ),
+          );
+        },
+      );
+    }).toList(),
+  );
+}
+
+
+
 
   Widget _buildAccreditationBar() {
     return Container(
