@@ -3,6 +3,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../config/theme/text_styles.dart';
 import '../../../models/onboarding_model.dart';
 import '../../home/screens/home_screen.dart';
+import '../../../services/conference_notification_service.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -32,6 +33,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: lightBeige,
+      // ADD THIS - Floating Action Button for Debug
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _checkNotifications,
+      //   backgroundColor: primaryPurple,
+      //   child: const Icon(Icons.notifications_active, color: whiteColor),
+      // ),
       body: SafeArea(
         child: Column(
           children: [
@@ -100,7 +107,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                           ),
                           Text(
-                            'Conference 2025',
+                            'Congress 2025',
                             style: TextStyle(
                               fontSize: 11,
                               color: accentPurple,

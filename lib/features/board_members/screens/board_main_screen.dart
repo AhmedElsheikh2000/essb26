@@ -82,7 +82,7 @@ class BoardMainScreen extends StatelessWidget {
             // Conference Board
             _buildSimpleCard(
               context,
-              title: 'Conference Board',
+              title: 'Congress Board',
               subtitle: 'Organizing Committee Members',
               icon: Icons.event_rounded,
               color: primaryPurple,

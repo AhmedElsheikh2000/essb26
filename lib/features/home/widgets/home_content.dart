@@ -11,8 +11,14 @@ import '../../gallery/screens/gallery_screen.dart';
 import '../../certificate/screens/certificate_screen.dart';
 import '../../sponsers/screens/sponsers_screen.dart';
 
-class HomeContent extends StatelessWidget {
+class HomeContent extends StatefulWidget {
   const HomeContent({super.key});
+
+  @override
+  State<HomeContent> createState() => _HomeContentState();
+}
+
+class _HomeContentState extends State<HomeContent> {
 
   // Conference Theme Colors
   static const Color primaryPurple = Color(0xFF3D2B5C);
@@ -21,6 +27,44 @@ class HomeContent extends StatelessWidget {
   static const Color darkText = Color(0xFF2C1B3D);
   static const Color whiteColor = Colors.white;
   static const Color goldColor = Color(0xFFD4AF37);
+
+final ScrollController _scrollController = ScrollController();
+double scrollSpeed = 40; // pixels per second
+
+@override
+void initState() {
+  super.initState();
+  _startAutoScroll();
+}
+
+void _startAutoScroll() {
+  Future.delayed(const Duration(milliseconds: 300), () {
+    _autoScroll();
+  });
+}
+
+void _autoScroll() async {
+  if (!mounted) return;
+
+  final maxScroll = _scrollController.position.maxScrollExtent;
+
+  await _scrollController.animateTo(
+    maxScroll,
+    duration: Duration(seconds: (maxScroll / scrollSpeed).round()),
+    curve: Curves.linear,
+  );
+
+  if (!mounted) return;
+
+  _scrollController.jumpTo(0);
+  _autoScroll();
+}
+
+@override
+void dispose() {
+  _scrollController.dispose();
+  super.dispose();
+}
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +174,7 @@ items: banners.map((imgPath) {
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
                 image: AssetImage(imgPath),
-                fit: BoxFit.fill, //stretched shwaya , contain mkhlyaha cropped 
+                fit: BoxFit.fill, //stretched shwaya , contain mkhlyaha cropped
               ),
           
                 boxShadow: [
@@ -161,11 +205,11 @@ items: banners.map((imgPath) {
           colors: [primaryPurple, accentPurple],
         ),
       ),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        physics: const BouncingScrollPhysics(),
-        itemCount: 10, // Repeat for scrolling effect
-        itemBuilder: (context, index) {
+      child: ListView.builder(      controller: _scrollController,
+      scrollDirection: Axis.horizontal,
+      physics: const NeverScrollableScrollPhysics(), // prevent touch
+      itemCount: 25, // long loop = smooth scrolling
+      itemBuilder: (context, index) {
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             child: Row(
@@ -185,11 +229,11 @@ items: banners.map((imgPath) {
                       ),
                     ],
                   ),
-                  child: const Icon(
-                    Icons.workspace_premium,
-                    color: goldColor,
-                    size: 26,
-                  ),
+                  child: Image.asset(
+  'assets/images/AACME.png', 
+  width: 26,
+  height: 26, 
+)
                 ),
                 const SizedBox(width: 16),
                 // Text
@@ -382,12 +426,12 @@ items: banners.map((imgPath) {
         'screen': const MapsScreen(),
         'color': const Color(0xFF4CAF50),
       },
-      {
-        'icon': Icons.photo_library_outlined,
-        'label': 'Gallery',
-        'screen': const GalleryScreen(),
-        'color': const Color(0xFFE91E63),
-      },
+      // {
+      //   'icon': Icons.photo_library_outlined,
+      //   'label': 'Gallery',
+      //   'screen': const GalleryScreen(),
+      //   'color': const Color(0xFFE91E63),
+      // },
       {
         'icon': Icons.card_membership_outlined,
         'label': 'Certificate',

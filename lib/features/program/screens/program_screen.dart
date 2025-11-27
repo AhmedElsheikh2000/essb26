@@ -173,7 +173,7 @@ class _ProgramScreenState extends State<ProgramScreen> with SingleTickerProvider
                 ),
                 onChanged: _filterProgram,
               )
-            : const Text('Conference Program'),
+            : const Text('congress Program'),
         centerTitle: !_isSearching,
         backgroundColor: primaryPurple,
         foregroundColor: whiteColor,

@@ -31,7 +31,7 @@ class ConferenceBoardScreen extends StatelessWidget {
         'name': 'Prof. Mohamed Hantira',
         'title': 'Congress President',
         'subtitle': 'ESSB',
-        'image': 'assets/images/board_members/mohamed_hantira.jpg',
+        'image': 'assets/images/board_members/mohamed_hanterajpeg.jpeg',
       },
       {
         'name': 'Prof. Diane Gray',
@@ -171,7 +171,7 @@ class ConferenceBoardScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: lightBeige,
       appBar: AppBar(
-        title: const Text('Conference Board'),
+        title: const Text('Congress Board'),
         centerTitle: true,
         backgroundColor: primaryPurple,
         foregroundColor: whiteColor,

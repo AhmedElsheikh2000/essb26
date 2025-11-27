@@ -12,13 +12,13 @@ class OnboardingModel {
 
 List<OnboardingModel> onboardingPages = [
   OnboardingModel(
-    title: 'Welcome to ESSB & PATS\nConference 2025',
-    description: 'Join the 24th Annual Conference of the Egyptian Scientific Society of Bronchology and the 4th Biennial Conference of the Pan African Thoracic Society in Cairo, Egypt',
+    title: 'Welcome to ESSB & PATS\nCongress 2025',
+    description: 'Join the 24th Annual Congress of the Egyptian Scientific Society of Bronchology and the 4th Biennial Congress of the Pan African Thoracic Society in Cairo, Egypt',
     icon: '🌍',
   ),
   OnboardingModel(
-    title: 'Explore Conference\nProgram & Schedule',
-    description: 'Access comprehensive information about conference sessions, workshops, keynote speakers, and scientific presentations scheduled from December 3-5, 2025',
+    title: 'Explore Congress\nProgram & Schedule',
+    description: 'Access comprehensive information about congress sessions, workshops, keynote speakers, and scientific presentations scheduled from December 3-5, 2025',
     icon: '📅',
   ),
   OnboardingModel(
